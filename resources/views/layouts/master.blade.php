@@ -205,8 +205,22 @@
                     </i>
                 </a>
             </li>
-            
-            
+            <li class="item" id="profile">
+                <a href="sailors" class="menu-btn btn-2">
+                    <i class="fas fa-user">
+                        <span>ажилтан засах</span>
+                    </i>
+                </a>
+            </li>
+            <li class="item" id="profile">
+                <a href="show" class="menu-btn btn-2">
+                    <i class="fas fa-user">
+                        <span>ажилтан харах</span>
+                    </i>
+                </a>
+            </li>
+
+
         </div>
     </div>
     <div class="main-container">

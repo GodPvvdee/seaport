@@ -14,8 +14,10 @@ class SailorController extends Controller
      */
     public function index()
     {
-        //
-        
+
+        $sailors = Sailor::all();
+        return view('index', compact('sailors'));
+
     }
 
     /**
@@ -25,7 +27,8 @@ class SailorController extends Controller
      */
     public function create()
     {
-        //ажилтан бүртгэх 
+        //ажилтан бүртгэх
+
        return view("sailor");
     }
 
@@ -39,7 +42,7 @@ class SailorController extends Controller
     {
         //ажилтан хадгалах
 
-       // dd($request->all());
+//       dd($request->all());
          Sailor::create($request->all());
          return redirect()->to('/sailor');
     }
@@ -53,6 +56,7 @@ class SailorController extends Controller
     public function show(Sailor $sailor)
     {
         //
+        return view('show', compact('sailor'));
     }
 
     /**
@@ -63,7 +67,8 @@ class SailorController extends Controller
      */
     public function edit(Sailor $sailor)
     {
-        //
+//        dd($sailor);
+        return view('edit', compact('sailor'));
     }
 
     /**
@@ -76,6 +81,25 @@ class SailorController extends Controller
     public function update(Request $request, Sailor $sailor)
     {
         //
+        //dd($sailor);
+        //Sailor::update($request->all());
+
+        $sailor->sailor_name = $request->sailor_name;
+        $sailor->date_of_birth = $request->date_of_birth;
+        $sailor->marital_status = $request->marital_status;
+
+        $sailor->address = $request->address;
+        $sailor->height = $request->height;
+        $sailor->weight = $request->weight;
+
+        $sailor->blood_type = $request->blood_type;
+        $sailor->shoe_size = $request->shoe_size;
+        $sailor->job_status = $request->job_status;
+        $sailor->save();
+
+
+        //return redirect()->route('contact.index');
+        return redirect()->to('/sailor');
     }
 
     /**
@@ -87,5 +111,7 @@ class SailorController extends Controller
     public function destroy(Sailor $sailor)
     {
         //
+        $sailor->delete();
+        return redirect()->to('/sailor');
     }
 }
